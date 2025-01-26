@@ -1,10 +1,14 @@
 import express from "express";
 import db from "../db/connection.js";
-import { ObjectId } from "mongodb";
 
 // router will be used to define routes.
 const router = express.Router();
 
+
+// router.get('/', (req, res) => {});
+// router.post('/users', (req, res) => {});
+// router.get('/:userId', (req, res) => {});
+// router.delete('/:userId', (req, res) => {}); 
 
 // get all users
 router.get("/", async (req, res) => {
@@ -12,12 +16,6 @@ router.get("/", async (req, res) => {
     let results = await collection.find().toArray();
     res.send(results).status(200);
 });
-
-router.get("/", async (req, res) => {
-    let collection = await db.collection("timeBlocks");
-    let results = await collection.find().toArray();
-    res.send(results).status(200);
-})
 
 
 // get user by userID
